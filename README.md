@@ -1,4 +1,8 @@
-### package.json
+### Introduction
+taro-template，基于fs实现命令行快速创建taro文件模板
+
+### Config
+在 `package.json` 中添加如下的script
 ```json
 {
   "scripts": {
