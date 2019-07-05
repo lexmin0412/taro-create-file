@@ -1,6 +1,11 @@
 ### Introduction
 taro-template，基于fs实现命令行快速创建taro文件模板
 
+### Installation
+```
+yarn add taro-template -D
+```
+
 ### Config
 在 `package.json` 中添加如下的script
 ```json
