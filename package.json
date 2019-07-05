@@ -12,7 +12,8 @@
   },
   "keywords": [
     "taro",
-    "node"
+    "node",
+    "fs"
   ],
   "author": "cellerchan",
   "license": "ISC",
