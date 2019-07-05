@@ -1,0 +1,23 @@
+{
+  "name": "taro-template",
+  "version": "0.0.1",
+  "description": "create file with yarn command",
+  "main": "template.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cathe-zhang/taro-template.git"
+  },
+  "keywords": [
+    "taro",
+    "node"
+  ],
+  "author": "cellerchan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cathe-zhang/taro-template/issues"
+  },
+  "homepage": "https://github.com/cathe-zhang/taro-template#readme"
+}
