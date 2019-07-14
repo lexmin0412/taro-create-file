@@ -1,5 +1,5 @@
 ### Introduction
-taro-template，基于fs实现命令行快速创建taro文件模板
+taro-template，基于nodejs的fs模块实现命令行快速创建taro文件模板
 
 ### Installation
 ```
