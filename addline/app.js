@@ -33,7 +33,7 @@ module.exports = ( filePath, lineStr, directoryPath ) => {
       }
     }
   })
-  similarRouteLine = similarRouteLine > -1 ? similarRouteLine : pageAttrEndIndex
+  similarRouteLine = similarRouteLine > -1 ? similarRouteLine : pageAttrEndIndex-1
   console.log('同路径路由行数', similarRouteLine)
 
   // 创建新数组 插入路由声明代码
