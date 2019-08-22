@@ -1,6 +1,10 @@
 // 页面模版
-const echoPageTemplate = (pathname) => {
-  return `import Taro, { Component, Config } from '@tarojs/taro';
+const echoPageTemplate = (pathname, desc) => {
+  return `/**
+ * ${desc||'页面描述'}
+ */
+  
+import Taro, { Component, Config } from '@tarojs/taro';
 import { connect } from '@tarojs/redux';
 import { ComponentClass } from 'react';
 import { View } from '@tarojs/components';
@@ -30,7 +34,7 @@ class Index extends Component {
   render() {
     return (
       <View className='${pathname}-page'>
-        <view>page</view>
+        <view>${desc||'页面描述'}</view>
       </View>
     );
   }

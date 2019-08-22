@@ -4,27 +4,26 @@
  * services模版快速生成脚本,执行命令 yarn template s `文件名`
  */
 
-// import echoServiceTpl from './templates/service.tpl' 
+const fs = require('fs');
 const echoServiceTpl = require('./templates/service.tpl')
 const echoInterfaceTpl = require('./templates/interface.tpl')
 const echoPageTemplate = require('./templates/page.tpl')
 const echoScssTpl = require('./templates/scss.tpl')
 const echoModelTpl = require('./templates/model.tpl')
-
-
-const fs = require('fs');
+const addRouteInEntry = require('./addline/app')
 
 const typeArray = ['m', 's', 'p'];
 
 const type = process.argv[2];
 const pathname = process.argv[3];
 const filename = process.argv[4]
+const fileDesc = process.argv[5]  // 文件描述
 console.log(process.argv);
 
 // 根据传入的文件路径和文件名称生成模板字符串
 const serviceTep = echoServiceTpl(filename)   // service模板
 const itfTpl = echoInterfaceTpl(filename)     // interface模板
-const indexTep = echoPageTemplate(filename)   // page模板
+const indexTep = echoPageTemplate(filename, fileDesc)   // page模板
 const scssTep = echoScssTpl(filename)         // scss模板
 const modelTep = echoModelTpl(filename)       // model模板
 
@@ -50,6 +49,9 @@ if (!pathname) {
 	process.exit(0);
 }
 
+const pathnameParentDivider = pathname.slice(0, pathname.indexOf('/')+1)
+console.log('剪切后的父文件夹名称', pathname)
+
 // 定义文件夹路径
 const pageDirectoryPath = `./src/pages/${pathname}`;
 const modelDirectoryPath = `./src/models/${pathname}`;
@@ -67,8 +69,16 @@ switch (type) {
 		}
 		// 如果文件夹不存在则创建文件夹
 		if ( !isDirectoryExsited ) {
+			// 如果存在嵌套 先创建父文件夹
+			if ( pathname.includes('/') ) {
+				fs.mkdirSync(`./src/pages/${pathnameParentDivider}`)
+			}
 			fs.mkdirSync(`${pageDirectoryPath}`);
 		}
+
+		// 在app.tsx中添加路由
+		addRouteInEntry('', `pages/${pathname}/${filename}`, pathname)
+		
 		// 创建文件
 		fs.writeFileSync(`${pageDirectoryPath}/${filename}.tsx`, indexTep);
 		fs.writeFileSync(`${pageDirectoryPath}/${filename}.scss`, scssTep);
