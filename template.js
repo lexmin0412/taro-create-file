@@ -52,6 +52,17 @@ if (!pathname) {
 const pathnameParentDivider = pathname.slice(0, pathname.indexOf('/')+1)
 console.log('剪切后的父文件夹名称', pathname)
 
+// 先判断 如果没有相应的容器文件夹 则先创建一个
+if ( fs.existsSync('./src/pages') ) {
+	fs.mkdirSync('./src/pages')
+}
+if ( fs.existsSync('./src/models') ) {
+	fs.mkdirSync('./src/models')
+} 
+if ( fs.existsSync('./src/services') ) {
+	fs.mkdirSync('./src/services')
+}
+
 // 定义文件夹路径
 const pageDirectoryPath = `./src/pages/${pathname}`;
 const modelDirectoryPath = `./src/models/${pathname}`;
