@@ -19,14 +19,22 @@ yarn add taro-template -D
 ### Usage
 
 - 创建页面(同步创建scss和interface)
-```
-yarn template p directoryName fileName
+```bash
+yarn template p directoryPath fileName fileDesc
 ```
 - 创建model
-```
-yarn template m directoryName fileName
+```bash
+yarn template m directoryPath fileName fileDesc
 ```
 - 创建service
+```bash
+yarn template s directoryPath fileName fileDesc
 ```
-yarn template s directoryName fileName
-```
+
+### API
+|参数|描述|默认值|参数说明|
+|---|---|---|---|
+|fileType|文件类型|无，必传|string p-page m-model s-service|
+|directoryPath|文件夹路径|无，必传|string|
+|fileName|文件名|无，必传|string|
+|fileDesc|文件描述|'文件描述'|string|
