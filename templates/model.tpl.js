@@ -1,4 +1,9 @@
-// model文件模版 import TopicService from '../services/topic.service';
+
+/**
+ * model模版
+ * @param {string} pathname 文件名
+ */
+
 const echoModelTpl = pathname => {
   return `import ${pathname}Service from '../services/${pathname}.service';
 

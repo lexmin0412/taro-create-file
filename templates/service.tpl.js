@@ -1,5 +1,9 @@
-// service页面模版
-const echoServiceTpl = ( pathname ) => {
+/**
+ * service文件模版
+ * @param {string} pathname 文件名
+ */
+
+const echoServiceTpl = (pathname) => {
 	return `
 import BaseRequest from '../utils/request';
 
@@ -15,7 +19,7 @@ class ${pathname}Service extends BaseRequest {
 }
 
 export default new ${pathname}Service();
-` 
+`
 }
 
 module.exports = echoServiceTpl

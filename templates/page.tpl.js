@@ -1,4 +1,8 @@
-// 页面模版
+/**
+ * taro页面模版
+ * @param {string} pathname 文件名
+ * @param {string} desc 文件描述
+ */
 const echoPageTemplate = (pathname, desc) => {
   return `/**
  * ${desc||'页面描述'}

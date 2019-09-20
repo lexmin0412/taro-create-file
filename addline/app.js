@@ -1,3 +1,7 @@
+/**
+ * 在app.tsx中插入路由
+ */
+
 const fs = require('fs')
 
 /**
@@ -5,35 +9,35 @@ const fs = require('fs')
  * lineStr 插入行字符串
  * directoryPath 创建文件的存放路径
  */
-module.exports = ( filePath, lineStr, directoryPath ) => {
+module.exports = (filePath, lineStr, directoryPath) => {
   // 设置入口文件路径 未传则使用src下的app.tsx文件
   const entryName = filePath || "src/app.tsx"
 
   // 读取文件 用换行符切割为字符串数组
   let fileStrArr = fs.readFileSync(entryName).toString().split("\n")
 
-  console.log('切割完成的文件',fileStrArr)
+  console.log('切割完成的文件', fileStrArr)
 
   // 寻找page属性开始的行
   const pageAttrStartIndex = fileStrArr.findIndex((item, index) => {
     return item.includes('pages: [')
   })
   // 寻找page属性结束的行
-  const pageAttrEndIndex = fileStrArr.findIndex((item,index)=>{
+  const pageAttrEndIndex = fileStrArr.findIndex((item, index) => {
     return item.includes('],') && index > pageAttrStartIndex
   })
   console.log('开始行', pageAttrStartIndex, '结束行', pageAttrEndIndex)
 
   // 寻找合适插入的行(已经存在相似路径的路由)
   console.log('查找路由', directoryPath)
-  let similarRouteLine = fileStrArr.findIndex((item,index)=>{
-    if ( item.includes(directoryPath) && index > pageAttrStartIndex && index < pageAttrEndIndex ) {
-      if ( !fileStrArr[index + 1].includes(directoryPath) ) {
+  let similarRouteLine = fileStrArr.findIndex((item, index) => {
+    if (item.includes(directoryPath) && index > pageAttrStartIndex && index < pageAttrEndIndex) {
+      if (!fileStrArr[index + 1].includes(directoryPath)) {
         return true
       }
     }
   })
-  similarRouteLine = similarRouteLine > -1 ? similarRouteLine : pageAttrEndIndex-1
+  similarRouteLine = similarRouteLine > -1 ? similarRouteLine : pageAttrEndIndex - 1
   console.log('同路径路由行数', similarRouteLine)
 
   // 创建新数组 插入路由声明代码

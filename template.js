@@ -1,7 +1,5 @@
 /**
- * pages模版快速生成脚本,执行命令 yarn template p `文件名`
- * models模版快速生成脚本,执行命令 yarn template m `文件名`
- * services模版快速生成脚本,执行命令 yarn template s `文件名`
+ * 命令逻辑处理文件
  */
 
 const fs = require('fs');
@@ -10,9 +8,10 @@ const echoInterfaceTpl = require('./templates/interface.tpl')
 const echoPageTemplate = require('./templates/page.tpl')
 const echoScssTpl = require('./templates/scss.tpl')
 const echoModelTpl = require('./templates/model.tpl')
+const echoCompTpl = require('./templates/component.tpl')
 const addRouteInEntry = require('./addline/app')
 
-const typeArray = ['m', 's', 'p'];
+const typeArray = ['m', 's', 'p', 'c'];
 
 const type = process.argv[2];
 const pathname = process.argv[3];
@@ -26,18 +25,20 @@ const itfTpl = echoInterfaceTpl(filename)     // interface模板
 const indexTep = echoPageTemplate(filename, fileDesc)   // page模板
 const scssTep = echoScssTpl(filename)         // scss模板
 const modelTep = echoModelTpl(filename)       // model模板
+const compTep = echoCompTpl(filename, fileDesc)  // component模版
 
 // 当命令输入错误时弹出的tips
 function exampleTips() {
 	console.log('命令使用例子：');
-	console.log('示例1：yarn template p test');
-	console.log('示例2：yarn template m test');
-	console.log('示例3：yarn template s test');
+	console.log('创建页面：yarn template p directoryPath fileName fileDesc');
+	console.log('创建model：yarn template m directoryPath fileName fileDesc');
+	console.log('创建service：yarn template s directoryPath fileName fileDesc');
+	console.log('创建component：yarn template c directoryPath fileName fileDesc');
 }
 
 // 判断文件类型
 if (!type || typeArray.indexOf(type) < 0) {
-	console.log("操作类型只能是：['m', 's', 'p']");
+	console.log("操作类型只能是：['m', 's', 'p', 'c']");
 	exampleTips();
 	process.exit(0);
 }
@@ -53,20 +54,26 @@ const pathnameParentDivider = pathname.slice(0, pathname.indexOf('/')+1)
 console.log('剪切后的父文件夹名称', pathname)
 
 // 先判断 如果没有相应的容器文件夹 则先创建一个
-if ( !fs.existsSync('./src/pages') ) {
+if ( !fs.existsSync('./src/pages') && type === 'p' ) {
 	fs.mkdirSync('./src/pages')
 }
-if ( !fs.existsSync('./src/models') ) {
+if ( !fs.existsSync('./src/models') && type === 'm' ) {
 	fs.mkdirSync('./src/models')
 } 
-if ( !fs.existsSync('./src/services') ) {
+if ( !fs.existsSync('./src/services') && type === 's' ) {
 	fs.mkdirSync('./src/services')
+}
+console.log(!fs.existsSync('./src/components'), type === 'c');
+
+if ( !fs.existsSync('./src/components') && type === 'c' ) {
+	fs.mkdirSync('./src/components')
 }
 
 // 定义文件夹路径
 const pageDirectoryPath = `./src/pages/${pathname}`;
 const modelDirectoryPath = `./src/models/${pathname}`;
 const serviceDirectoryPath = `./src/services/${pathname}`;
+const componentDirectoryPath = `./src/components/${pathname}`
 
 // 根据传入的参数创建文件
 switch (type) {
@@ -117,7 +124,20 @@ switch (type) {
 		if ( !isModelDirectoryExisted ) {
 			fs.mkdirSync(modelDirectoryPath)
 		}
-		fs.writeFileSync(`${modelDirectoryPath}${filename}.ts`, modelTep);
+		fs.writeFileSync(`${modelDirectoryPath}/${filename}.ts`, modelTep);
+		break;
+	case 'c': 
+		const isComponentDirectoryExisted = fs.existsSync(`${componentDirectoryPath}/${filename}.ts`)
+		const isComponentFileExisted = fs.existsSync(componentDirectoryPath);
+		if (isComponentDirectoryExisted) {
+			console.log('该文件已经存在！！');
+			process.exit(0);
+		}
+		if ( !isComponentFileExisted ) {
+			fs.mkdirSync(componentDirectoryPath)
+		}
+		fs.writeFileSync(`${componentDirectoryPath}/${filename}.tsx`, compTep);
+		fs.writeFileSync(`${componentDirectoryPath}/${filename}.scss`, scssTep);
 		break;
 }
 console.log('文件创建成功！！！');

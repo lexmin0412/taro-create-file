@@ -1,4 +1,7 @@
-// interface模板
+/**
+ * 页面interface模版
+ */
+
 const echoInterfaceTpl = () => {
   return `
 /**
