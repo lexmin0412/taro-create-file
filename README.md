@@ -52,7 +52,7 @@ yarn template s directoryPath fileName fileDesc
 
 |参数|描述|默认值|参数说明|
 |---|---|---|---|
-|fileType|文件类型|无，必传|string p-page m-model s-service|
+|fileType|文件类型|无，必传|string p-page-页面 m-model-数据model s-service-服务类 c-component-组件|
 |directoryPath|文件夹路径|无，必传|string|
 |fileName|文件名|无，必传|string|
 |fileDesc|文件描述|'文件描述'|string|
