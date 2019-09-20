@@ -1,6 +1,6 @@
 {
   "name": "taro-template",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "create file with yarn command",
   "main": "template.js",
   "scripts": {
