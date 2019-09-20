@@ -6,7 +6,7 @@
 
 const echoCompTpl = (fileName, desc) => {
   return `import Taro, { Component } from '@tarojs/taro'
-import { View, Text } from '@tarojs/components'
+import { View } from '@tarojs/components'
 
 import './${fileName}.scss'
 
