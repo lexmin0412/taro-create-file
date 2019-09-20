@@ -56,3 +56,7 @@ yarn template s directoryPath fileName fileDesc
 |directoryPath|文件夹路径|无，必传|string|
 |fileName|文件名|无，必传|string|
 |fileDesc|文件描述|'文件描述'|string|
+
+### 更新日志
+
+[点此前往](./CHANGELOG.md)
