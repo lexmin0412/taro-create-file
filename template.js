@@ -95,7 +95,7 @@ switch (type) {
 		}
 
 		// 在app.tsx中添加路由
-		addRouteInEntry('', `pages/${pathname}/${filename}`, pathname)
+		// addRouteInEntry('', `pages/${pathname}/${filename}`, pathname)
 		
 		// 创建文件
 		fs.writeFileSync(`${pageDirectoryPath}/${filename}.tsx`, indexTep);
