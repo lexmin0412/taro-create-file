@@ -32,20 +32,26 @@ yarn template p directoryPath fileName fileDesc
 
 - 创建model
 
-```bash
+```shell
 yarn template m directoryPath fileName fileDesc
 ```
 
 - 创建service
 
-```bash
+```shell
 yarn template s directoryPath fileName fileDesc
 ```
 
 - 创建component
 
-```bash
+```shell
 yarn template s directoryPath fileName fileDesc
+```
+
+### demo
+
+```shell
+yarn template p flowpool noticeTplList 通知模版列表 noticeTplList
 ```
 
 ### Command Params
