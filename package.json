@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/cathe-zhang/taro-create-file/issues"
   },
-  "homepage": "https://github.com/cathe-zhang/taro-create-file#readme"
+  "homepage": "https://github.com/cathe-zhang/taro-create-file#readme",
+  "dependencies": {
+    "wtils": "^0.1.1"
+  }
 }
