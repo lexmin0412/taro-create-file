@@ -1,3 +1,5 @@
+const wtils = require('wtils')
+
 /**
  * taro组件模版
  * @param {string} fileName 文件名
@@ -24,7 +26,7 @@ interface IState {
   
 }
 
-export default class ${fileName.slice(0,1).toUpperCase()}${fileName.slice(1)} extends Component<IProps, IState> {
+export default class ${wtils.transFirstLetterToUpper(fileName)} extends Component<IProps, IState> {
 
   render () {
     return (
