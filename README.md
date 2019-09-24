@@ -1,13 +1,13 @@
-# taro-file-template
+# taro-create-file
 
 ## Introduction
 
-taro-template，基于nodejs的fs模块实现命令行快速创建taro文件模板
+taro-create-file，基于nodejs的fs模块实现命令行快速创建taro文件模板
 
 ### Installation
 
 ```shell
-yarn add taro-template -D
+yarn add taro-create-file -D
 ```
 
 ### Config
@@ -17,7 +17,7 @@ yarn add taro-template -D
 ```json
 {
   "scripts": {
-    "template": "node node_modules/taro-template/template.js"
+    "template": "node node_modules/taro-create-file/template.js"
   }
 }
 ```
