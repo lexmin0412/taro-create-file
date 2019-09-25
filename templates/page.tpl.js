@@ -34,7 +34,7 @@ interface ${wtils.transFirstLetterToUpper(filename)} {
 
 class ${wtils.transFirstLetterToUpper(filename)} extends Component {
   config: Config = {
-    navigationBarTitleText: ${desc}
+    navigationBarTitleText: '${desc}'
   };
 
   state: IPageState = {};
