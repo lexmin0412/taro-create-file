@@ -1,8 +1,7 @@
 # TODO
 
-## v0.1.4
-
-- [x] 修复页面模板标题没有引号包括的问题
+## v0.1.5
+- [x] npm发包忽略.github, node_modules, TODO, yarn.lock, changelog.md文件
 
 ## Lefts
 

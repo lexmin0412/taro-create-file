@@ -1,6 +1,6 @@
 {
   "name": "taro-create-file",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "create file with node command",
   "main": "template.js",
   "scripts": {

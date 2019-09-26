@@ -1,10 +1,14 @@
 # CHANGELOG
 
-## 0.1.3
+## v0.1.4
 
-- [x] 创建页面时将描述赋值给 `navigationBarTitleText`
-- [x] 创建页面时修改类名为首字母大写的文件desc, interface添加注释, 顶部import引入按换行符分三个部分
-- [x] 添加wld-utils依赖
+- 修复页面模板标题没有引号包括的问题
+
+## v0.1.3
+
+- 创建页面时将描述赋值给 `navigationBarTitleText`
+- 创建页面时修改类名为首字母大写的文件desc, interface添加注释, 顶部import引入按换行符分三个部分
+- 添加wld-utils依赖
 
 ## v0.1.2
 
